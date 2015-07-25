@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="org.masonapps.bluetootharduinocomm.ServoFragment">
+    
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:max="180"
+        android:id="@+id/servo_seekbar"/>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/servo_scrollview"
+        android:layout_below="@id/servo_seekbar">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/servo_textview"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/primary_text"
+        android:padding="16dp"/>
+    </ScrollView>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/connection_progress"
+        android:visibility="gone"
+        android:indeterminate="true"/>
+
+</RelativeLayout>
