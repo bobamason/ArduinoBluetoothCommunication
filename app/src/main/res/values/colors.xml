@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
-    <color name="primary_light">#C5CAE9</color>
-    <color name="accent">#FFC107</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#B6B6B6</color>
+
+    <color name="white_100">#FFFFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_30">#4DFFFFFF</color>
+    <color name="white_12">#1FFFFFFF</color>
+    <color name="blue_900">#0D47A1</color>
+    <color name="blue_700">#1976D2</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="light_blue_900">#01579B</color>
+    <color name="light_blue_600">#039BE5</color>
+    <color name="indigo_900">#1A237E</color>
+    <color name="indigo_700">#303F9F</color>
+    <color name="indigo_500">#3F51B5</color>
+    <color name="teal_700">#00796B</color>
+    <color name="teal_500">#009688</color>
+    <color name="teal_300">#4DB6AC</color>
+    <color name="blue_gray_900">#263238</color>
+    <color name="blue_gray_900_translucent">#99263238</color>
+    <color name="blue_gray_800">#37474F</color>
+    <color name="blue_gray_500">#607D8B</color>
+    <color name="blue_gray_300">#90A4AE</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="cyan_700">#0097A7</color>
+    <color name="cyan_800">#00838F</color>
+    <color name="cyan_900">#006064</color>
+    <color name="dark_gray">#1b1b1b</color>
+
+    <!--<color name="primary">@color/cyan_800</color>-->
+    <!--<color name="primary_dark">@color/cyan_800</color>-->
+    <!--<color name="primary_light">@color/cyan_500</color>-->
+    <!--<color name="accent">@color/cyan_500</color>-->
+    <!--<color name="primary_text">@color/white_100</color>-->
+    <!--<color name="secondary_text">@color/white_70</color>-->
+    <!--<color name="disabled_text">@color/white_30</color>-->
+    <!--<color name="icons">@color/white_100</color>-->
+    <!--<color name="divider">@color/white_12</color>-->
+
+    <!--<color name="primary">@color/blue_700</color>-->
+    <!--<color name="primary_dark">@color/blue_700</color>-->
+    <!--<color name="primary_light">@color/blue_500</color>-->
+    <!--<color name="accent">@color/blue_500</color>-->
+    <!--<color name="primary_text">@color/white_100</color>-->
+    <!--<color name="secondary_text">@color/white_70</color>-->
+    <!--<color name="disabled_text">@color/white_30</color>-->
+    <!--<color name="icons">@color/white_100</color>-->
+    <!--<color name="divider">@color/white_12</color>-->
+
+    <!--<color name="primary">@color/teal_500</color>-->
+    <!--<color name="primary_dark">@color/teal_500</color>-->
+    <!--<color name="primary_light">@color/teal_300</color>-->
+    <!--<color name="accent">@color/teal_300</color>-->
+    <!--<color name="primary_text">@color/white_100</color>-->
+    <!--<color name="secondary_text">@color/white_70</color>-->
+    <!--<color name="disabled_text">@color/white_30</color>-->
+    <!--<color name="icons">@color/white_100</color>-->
+    <!--<color name="divider">@color/white_12</color>-->
+
+    <color name="primary">@color/light_blue_900</color>
+    <color name="primary_dark">@color/light_blue_900</color>
+    <color name="primary_light">@color/light_blue_600</color>
+    <color name="accent">@color/light_blue_600</color>
+    <color name="primary_text">@color/white_100</color>
+    <color name="secondary_text">@color/white_70</color>
+    <color name="disabled_text">@color/white_30</color>
+    <color name="icons">@color/white_100</color>
+    <color name="divider">@color/white_12</color>
+
+    <color name="background_color">@color/blue_gray_900</color>
+    <color name="secondary_bg_color">@color/blue_gray_800</color>
+    <color name="title_text_color">@color/white_100</color>
 </resources>

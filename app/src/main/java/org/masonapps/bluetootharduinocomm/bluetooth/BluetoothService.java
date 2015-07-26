@@ -26,10 +26,10 @@ public class BluetoothService {
     public static final int STATE_CONNECTING = 2;
     public static final int STATE_CONNECTED = 3;
     private static final String TAG = "BluetoothService";
-    private ConnectThread connectThread = null;
-    private CommunicationThread communicationThread = null;
     private final BluetoothAdapter bluetoothAdapter;
     private final Handler handler;
+    private ConnectThread connectThread = null;
+    private CommunicationThread communicationThread = null;
     private int state;
 
     public BluetoothService(Handler handler, BluetoothAdapter bluetoothAdapter) {
@@ -98,6 +98,35 @@ public class BluetoothService {
         handler.obtainMessage(MESSAGE_STATE_CHANGE, state, -1).sendToTarget();
     }
 
+    public interface HandlerCallback {
+        void onRead(byte[] buffer, int bytes);
+
+        void onStateChange(int state);
+    }
+
+    public static class BluetoothHandler extends Handler {
+
+        private final WeakReference<HandlerCallback> callbackWeakReference;
+
+        public BluetoothHandler(HandlerCallback callback) {
+            callbackWeakReference = new WeakReference<>(callback);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            final HandlerCallback callback = callbackWeakReference.get();
+            if (callback == null) return;
+            switch (msg.what) {
+                case BluetoothService.MESSAGE_READ:
+                    callback.onRead((byte[]) msg.obj, msg.arg1);
+                    break;
+                case BluetoothService.MESSAGE_STATE_CHANGE:
+                    callback.onStateChange(msg.arg1);
+                    break;
+            }
+        }
+    }
+
     private class ConnectThread extends Thread {
 
         private final BluetoothSocket socket;
@@ -111,12 +140,12 @@ public class BluetoothService {
                 Log.d(TAG, "device name: " + device.getName() + " address: " + device.getAddress());
                 ParcelUuid[] parcelUuids = device.getUuids();
                 UUID uuid;
-                if(parcelUuids != null && parcelUuids.length > 0) {
+                if (parcelUuids != null && parcelUuids.length > 0) {
                     uuid = parcelUuids[0].getUuid();
                 } else {
                     uuid = MODULE_UUID;
                 }
-                Log.d(TAG, "device uuid: "  + uuid.toString());
+                Log.d(TAG, "device uuid: " + uuid.toString());
                 tmpSocket = device.createRfcommSocketToServiceRecord(uuid);
             } catch (IOException e) {
                 Log.e(TAG, "failed to create socket", e);
@@ -126,7 +155,7 @@ public class BluetoothService {
 
         @Override
         public void run() {
-//            bluetoothAdapter.cancelDiscovery();
+            bluetoothAdapter.cancelDiscovery();
             if (socket != null) {
                 try {
                     socket.connect();
@@ -214,33 +243,5 @@ public class BluetoothService {
                 Log.e(TAG, "failed to close socket", e);
             }
         }
-    }
-    
-    public static class BluetoothHandler extends Handler{
-        
-        private final WeakReference<HandlerCallback> callbackWeakReference;
-
-        public BluetoothHandler(HandlerCallback callback) {
-            callbackWeakReference = new WeakReference<>(callback);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            final HandlerCallback callback = callbackWeakReference.get();
-            if(callback == null) return;
-            switch (msg.what){
-                case BluetoothService.MESSAGE_READ:
-                    callback.onRead((byte[]) msg.obj, msg.arg1);
-                    break;
-                case BluetoothService.MESSAGE_STATE_CHANGE:
-                    callback.onStateChange(msg.arg1);
-                    break;
-            }
-        }
-    }
-    
-    public interface HandlerCallback{
-        void onRead(byte[] buffer, int bytes);
-        void onStateChange(int state);
     }
 }

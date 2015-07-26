@@ -59,9 +59,13 @@ public class MainActivity extends AppCompatActivity implements DeviceListFragmen
 
     @Override
     public void onDevicePicked(BluetoothDevice device) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.container, ServoFragment.newInstance(device.getAddress()), CONNECTION_FRAGMENT)
+//                .commit();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, ServoFragment.newInstance(device.getAddress()), CONNECTION_FRAGMENT)
+                .replace(R.id.container, PingGraphFragment.newInstance(device.getAddress()), CONNECTION_FRAGMENT)
                 .commit();
     }
 }
